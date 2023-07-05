@@ -40,7 +40,7 @@ steps:
       sudo sysctl -w vm.swappiness=1
       sudo sysctl -w fs.file-max=262144
       sudo sysctl -w vm.max_map_count=262144
-  - uses: marcosgz/oe-search@v1.0
+  - uses: marcosgz/oe-search@v1
     with:
       stack: elasticsearch:8.2.0
 ```
