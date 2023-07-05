@@ -20,7 +20,7 @@ For ElasticSearch 5.x and up, you can use any version present in [docker.elastic
 
 ElasticSearch 2.x and 1.x are also supported using the following versions:
 * elasticsearch:2.4.6
-* elasticsearch:1.7.2
+* elasticsearch:1.7.3
 
 For the OpenSearch project, you can use any version present in [opensearchproject/opensearch docker hub](https://hub.docker.com/r/opensearchproject/opensearch):
 * opensearch:1.3.3
