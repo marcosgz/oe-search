@@ -17,6 +17,12 @@ jobs:
           - opensearch:2.0.1
     steps:
       - uses: actions/checkout@v3
+      - name: Configure sysctl limits
+        run: |
+          sudo swapoff -a
+          sudo sysctl -w vm.swappiness=1
+          sudo sysctl -w fs.file-max=262144
+          sudo sysctl -w vm.max_map_count=262144
       - uses: ./.
         with:
           stack: ${{ matrix.stack }}
