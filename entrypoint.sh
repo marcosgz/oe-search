@@ -22,10 +22,6 @@ MAJOR_VERSION=`echo ${STACK_VERSION} | cut -c 1`
 DOCKER_NAME_PREFIX="oe-search-${STACK_DISTRIBUTION}-v${MAJOR_VERSION}-"
 DOCKER_NETWORK="oe-search"
 
-WAIT_FOR_URL="https://github.com/eficode/wait-for/releases/download/v2.2.3/wait-for"
-ROOT_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")"; cd ../ ; pwd -P )
-WAIT_FOR_PATH="${ROOT_PATH}/tmp/wait-for"
-
 for (( node=1; node<=${NODES-1}; node++ )) do
   port_com=$((COM_PORT + $node - 1))
   UNICAST_HOSTS+="${DOCKER_NAME_PREFIX}${node}:${port_com},"
@@ -41,12 +37,6 @@ trace() {
 	)
 }
 
-install_wait_for() {
-  mkdir -p "${ROOT_PATH}/tmp"
-	curl -fsSL -o "${WAIT_FOR_PATH}" "$WAIT_FOR_URL"
-	chmod +x "${WAIT_FOR_PATH}"
-	"${WAIT_FOR_PATH}" --version
-}
 
 start_docker_services() {
   local servicesHosts=()
@@ -72,10 +62,6 @@ start_docker_services() {
       --name="${DOCKER_NAME_PREFIX}${node}" \
       ${DOCKER_IMAGE}:${STACK_VERSION}
   done
-}
-
-function check_service_healthy() {
-  "${WAIT_FOR_PATH}" -t 10 "$1" -- echo "Service is up"
 }
 
 function cleanup_network {
@@ -169,6 +155,6 @@ END
 esac
 
 trace create_network "$DOCKER_NETWORK"
-trace install_wait_for
 trace start_docker_services
-trace check_service_healthy "localhost:${PORT}"
+
+sleep 10

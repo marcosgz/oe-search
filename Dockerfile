@@ -1,6 +1,6 @@
 FROM docker:stable
 
-RUN apk add --update bash curl netcat-openbsd
+RUN apk add --update bash
 
 COPY entrypoint.sh /entrypoint.sh
 
