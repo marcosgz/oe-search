@@ -1,0 +1,28 @@
+name: 'Run ElasticSearch or OpenSearch'
+description: 'Run multiple versions of ElasticSearch or OpenSearch in your GitHub Actions workflow.'
+author: 'marcosgz'
+
+branding:
+  icon: 'database'
+  color: 'green'
+
+inputs:
+  stack:
+    description: 'The Stack distribution and version to use. For example, elasticsearch:7.15.0 or opensearch:2.0.1'
+    required: true
+  nodes:
+    description: 'Number of nodes in the cluster'
+    required: false
+    default: 1
+  port:
+    description: 'Port where you want to run service'
+    required: false
+    default: 9200
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    OE_SEARCH_STACK: ${{ inputs.stack }}
+    NODES: ${{ inputs.nodes }}
+    PORT: ${{ inputs.port }}
