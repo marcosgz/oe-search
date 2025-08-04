@@ -117,7 +117,7 @@ END
     ))
     environment+=(--env "ES_JAVA_OPTS=-Xms${SERVICE_HEAP_SIZE} -Xmx${SERVICE_HEAP_SIZE}")
     ;;
-  elasticsearch-7|elasticsearch-8)
+  elasticsearch-7|elasticsearch-8|elasticsearch-9)
     DOCKER_IMAGE="${DOCKER_IMAGE:-docker.elastic.co/elasticsearch/elasticsearch}"
     environment+=($(cat <<-END
       --env xpack.security.enabled=false
