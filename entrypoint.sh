@@ -139,6 +139,7 @@ END
       --env bootstrap.memory_lock=true
       --env plugins.security.disabled=true
       --env discovery.seed_hosts=${HOSTS}
+      --env DISABLE_INSTALL_DEMO_CONFIG=true
 END
     ))
     environment+=(--env "OPENSEARCH_JAVA_OPTS=-Xms${SERVICE_HEAP_SIZE} -Xmx${SERVICE_HEAP_SIZE}")
