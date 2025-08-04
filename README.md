@@ -13,18 +13,19 @@ GitHub Action to start multi-version of ElasticSearch or OpenSearch
 ### Supported versions
 
 For ElasticSearch 5.x and up, you can use any version present in [docker.elastic.co](https://www.docker.elastic.co/):
-* elasticsearch:8.2.0
+* elasticsearch:9.1.0
+* elasticsearch:8.17.9
 * elasticsearch:7.13.2
 * elasticsearch:6.8.16
 * elasticsearch:5.6.16
 
 ElasticSearch 2.x and 1.x are also supported using the following versions:
 * elasticsearch:2.4.6
-* elasticsearch:1.7.3
+* elasticsearch:1.7.6
 
 For the OpenSearch project, you can use any version present in [opensearchproject/opensearch docker hub](https://hub.docker.com/r/opensearchproject/opensearch):
 * opensearch:1.3.3
-* opensearch:2.0.1
+* opensearch:2.19.3
 
 # Usage
 
