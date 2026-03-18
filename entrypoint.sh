@@ -133,13 +133,12 @@ END
       environment+=(--env cluster.initial_master_nodes=${HOSTS})
     fi
     ;;
-  opensearch-1|opensearch-2)
+  opensearch-1|opensearch-2|opensearch-3)
     DOCKER_IMAGE="${DOCKER_IMAGE:-opensearchproject/opensearch}"
     environment+=($(cat <<-END
-      --env bootstrap.memory_lock=true
-      --env plugins.security.disabled=true
       --env discovery.seed_hosts=${HOSTS}
       --env DISABLE_INSTALL_DEMO_CONFIG=true
+      --env DISABLE_SECURITY_PLUGIN=true
 END
     ))
     environment+=(--env "OPENSEARCH_JAVA_OPTS=-Xms${SERVICE_HEAP_SIZE} -Xmx${SERVICE_HEAP_SIZE}")
