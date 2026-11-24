@@ -48,4 +48,4 @@ steps:
 
 # License
 
-The scripts and documentation in this project are released under the [MIT](LICENSE)
+The scripts and documentation in this project are released under the [GPL-3.0-or-later](LICENSE)
